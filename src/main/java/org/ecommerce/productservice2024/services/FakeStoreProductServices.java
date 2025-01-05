@@ -58,7 +58,6 @@ public class FakeStoreProductServices implements ProductServices{
         for(FakeStoreProductDto fakeStoreProductDto:fakeStoreProductDtos) {
             products.add(convertFakeStoreProductDtoToProduct(fakeStoreProductDto));
         }
-        //return product
         return products;
     }
    /* 'https://fakestoreapi.com/products'
