@@ -2,10 +2,7 @@ package org.ecommerce.productservice2024.controllers;
 
 import org.ecommerce.productservice2024.models.Product;
 import org.ecommerce.productservice2024.services.ProductServices;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +12,7 @@ import java.util.List;
 public class ProductController {
     ProductServices productServices;
     public ProductController(ProductServices productServices){
+
         this.productServices=productServices;
     }
 
@@ -30,7 +28,17 @@ public class ProductController {
         return productServices.getAllProduct();
     }
 
+    @PutMapping("/{id}")
+    public Product replaceProduct(@PathVariable("id")Long id,@RequestBody Product product){
+       return productServices.replaceProduct(id,product);
+    }
 
+    @PatchMapping("/{id}")
+    public Product updateProduct(@PathVariable("id")Long id,@RequestBody Product product){
+       return productServices.updateProduct(id,product);
+
+
+    }
 
 }
 
